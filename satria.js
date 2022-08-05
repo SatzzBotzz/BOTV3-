@@ -45,7 +45,7 @@ module.exports = satria = async (satria, m, chatUpdate, store) => {
         const pushname = m.pushName || "No Name"
         const time = moment(Date.now()).tz('Asia/Jakarta').locale('id').format('HH:mm:ss z')
         const waktu = moment(Date.now()).tz('Asia/Jakarta').locale('id').format('a')
-        const ucapan = 'Selamat ' +  moment(Date.now()).tz('Asia/Jakarta').locale('id').format('a')
+        const ucapanWaktu = 'Selamat ' +  moment(Date.now()).tz('Asia/Jakarta').locale('id').format('a')
         const tanggal = moment.tz('Asia/Jakarta').format('dddd') + ', ' + moment.tz('Asia/Jakarta').format('LL')
         const salam =`${tanggal} - ${time}`
         const botNumber = await satria.decodeJid(satria.user.id)
@@ -57,7 +57,6 @@ module.exports = satria = async (satria, m, chatUpdate, store) => {
         const isMedia = /image|video|sticker|audio/.test(mime)
         
 	     //Thumnail by satria
-const thumb = { url : "https://zenzapis.xyz/randomimage/kucing?apikey=satganzdevs" }
 const vitum= { url : global.visoka }
         // Group
         const groupMetadata = m.isGroup ? await satria.groupMetadata(m.chat).catch(e => {}) : ''
@@ -67,14 +66,14 @@ const vitum= { url : global.visoka }
     	const isBotAdmins = m.isGroup ? groupAdmins.includes(botNumber) : false
     	const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
     	const isPremium = isCreator || global.premium.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender) || false
-    const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "6289523258649-1604595598@g.us"}, "message": {orderMessage: {itemCount: 99999999,status: 200, thumbnail: thumb, surface: 200, message: `© ${global.ownername}`, orderTitle: 'Satganz Devs', sellerJid: '6281316701742@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
-    const fdoc = {key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `© ${ownername}`,jpegThumbnail: thumb}}}
+    const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "6289523258649-1604595598@g.us"}, "message": {orderMessage: {itemCount: 99999999,status: 200, global.thumbnail: global.thumb, surface: 200, message: `© ${global.ownername}`, orderTitle: 'Satganz Devs', sellerJid: '6281316701742@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+    const fdoc = {key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `© ${ownername}`,jpegglobal.thumbnail: global.thumb}}}
 		const fvn = {key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "6289643739077-1613049930@g.us" } : {})},message: { "audioMessage": {"mimetype":"audio/ogg; codecs=opus","seconds":100000000000,"ptt": "true"}} } 
-		const fgif = {key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: {"videoMessage": { "title":`© ${global.ownername}`, "h": `satria`,'seconds': '359996400', 'gifPlayback': 'true', 'caption': `© ${global.ownername}`, 'jpegThumbnail': thumb}}}
-		const fgclink = {key: {participant: "0@s.whatsapp.net","remoteJid": "0@s.whatsapp.net"},"message": {"groupInviteMessage": {"groupJid": "6288213840883-1616169743@g.us","inviteCode": "https://chat.whatsapp.com/C2jcPPu4x4PItUFAvx1bgn","groupName": "Satganz Devs Ofc", "caption": `© ${global.ownername}`, 'jpegThumbnail': thumb}}}
-		const fvideo = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "6289643739077-1613049930@g.us" } : {}) },message: { "videoMessage": { "title":`${pushname}`, "h": `Hmm`,'seconds': '359996400', 'caption': `${pushname}`, 'jpegThumbnail': thumb}}}
-		const floc = {key : {participant : '6281316701742@s.whatsapp.net'},message: {locationMessage: {name: `${ownername}`,jpegThumbnail: thumb}}}
-		const fkontak = { key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `6283136505591-1614953337@g.us` } : {}) }, message: { 'contactMessage': { 'displayName': `${pushname}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${pushname},;;;\nFN:${pushname},\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': thumb, thumbnail: thumb,sendEphemeral: true}}}
+		const fgif = {key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: {"videoMessage": { "title":`© ${global.ownername}`, "h": `satria`,'seconds': '359996400', 'gifPlayback': 'true', 'caption': `© ${global.ownername}`, 'jpegglobal.thumbnail': global.thumb}}}
+		const fgclink = {key: {participant: "0@s.whatsapp.net","remoteJid": "0@s.whatsapp.net"},"message": {"groupInviteMessage": {"groupJid": "6288213840883-1616169743@g.us","inviteCode": "https://chat.whatsapp.com/C2jcPPu4x4PItUFAvx1bgn","groupName": "Satganz Devs Ofc", "caption": `© ${global.ownername}`, 'jpegglobal.thumbnail': global.thumb}}}
+		const fvideo = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "6289643739077-1613049930@g.us" } : {}) },message: { "videoMessage": { "title":`${pushname}`, "h": `Hmm`,'seconds': '359996400', 'caption': `${pushname}`, 'jpegglobal.thumbnail': global.thumb}}}
+		const floc = {key : {participant : '6281316701742@s.whatsapp.net'},message: {locationMessage: {name: `${ownername}`,jpegglobal.thumbnail: global.thumb}}}
+		const fkontak = { key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `6283136505591-1614953337@g.us` } : {}) }, message: { 'contactMessage': { 'displayName': `${pushname}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${pushname},;;;\nFN:${pushname},\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegglobal.thumbnail': global.thumb, global.thumbnail: global.thumb,sendEphemeral: true}}}
 		const ftoko = {
        key: {
                    fromMe: false,
@@ -85,7 +84,7 @@ const vitum= { url : global.visoka }
                        "product": {
                            "productImage":{
                                "mimetype": "image/jpeg",
-                               "jpegThumbnail": thumb//Gambarnye
+                               "jpegglobal.thumbnail": global.thumb//Gambarnye
                            },
                            "title": global.ownername, //Kasih namalu 
                            "description": salam, 
@@ -94,7 +93,7 @@ const vitum= { url : global.visoka }
                            "retailerId": "Ghost",
                            "productImageCount": 1
                        },
-                           "businessOwnerJid": `6281316701742@s.whatsapp.net`
+                           "businessOwnerJid": `${global.owner}@s.whatsapp.net`
                }
            }
           }
@@ -108,7 +107,7 @@ const vitum= { url : global.visoka }
                "extendedTextMessage": {
                         "text":global.ownername,
                         "title": global.ownername,
-                        'jpegThumbnail': thumb
+                        'jpegglobal.thumbnail': global.thumb
                                }
                              } 
                             }
@@ -118,7 +117,7 @@ const vitum= { url : global.visoka }
             { fromMe: false,
             participant: `0@s.whatsapp.net`, ...(m.chat  ? 
             { remoteJid: "status@broadcast" } : {}) },
-            message: { "liveLocationMessage": { "caption":"Satganz Devs","h": `Fuck`, 'jpegThumbnail': thumb}}
+            message: { "liveLocationMessage": { "caption":"Satganz Devs","h": `Fuck`, 'jpegglobal.thumbnail': global.thumb}}
            }
                
                   const fliveLoc2 = {
@@ -126,13 +125,13 @@ const vitum= { url : global.visoka }
             { fromMe: false,
             participant: `0@s.whatsapp.net`, ...(m.chat ? 
             { remoteJid: "status@broadcast" } : {}) },
-            message: { "liveLocationMessage": { "title": "Hi There Im Using GitHub","h": `Done`, 'jpegThumbnail': thumb}}
+            message: { "liveLocationMessage": { "title": "Hi There Im Using GitHub","h": `Done`, 'jpegglobal.thumbnail': global.thumb}}
            }
 		
 		const virus =  {
-             key: { fromMe: false,remoteJid: "satria@broadcast", participant: '0@s.whatsapp.net'}, message: {orderMessage: {itemCount: 2021, status: 200, thumbnail: thumb, surface: 200, message: '1955', orderTitle: 'hehe', sellerJid: '0@s.whatsapp.net'} } }       
+             key: { fromMe: false,remoteJid: "satria@broadcast", participant: '0@s.whatsapp.net'}, message: {orderMessage: {itemCount: 2021, status: 200, global.thumbnail: global.thumb, surface: 200, message: '1955', orderTitle: 'hehe', sellerJid: '0@s.whatsapp.net'} } }       
      const serang = (teks) => {
-           satria.sendMessage(`${teks}@s.whatsapp.net`, { text: teks, contextInfo:{"externalAdReply": {"title": ` hehe`,"body": ` hehe`, "previewType": "PHOTO","thumbnailUrl": `https://wa.me/6281316701742`,"thumbnail": thumb,"sourceUrl": "hehe"}}}, { quoted: virus})
+           satria.sendMessage(`${teks}@s.whatsapp.net`, { text: teks, contextInfo:{"externalAdReply": {"title": ` hehe`,"body": ` hehe`, "previewType": "PHOTO","global.thumbnailUrl": `https://wa.me/6281316701742`,"global.thumbnail": global.thumb,"sourceUrl": "hehe"}}}, { quoted: virus})
            }
            
 	const freply = async (teks) => {
@@ -142,25 +141,51 @@ const vitum= { url : global.visoka }
             return arr[Math.floor(Math.random() * arr.length)]
 	       }
 	const ply = async(teks) => {
-      await satria.sendMessage(m.chat, { contextInfo: { externalAdReply: {showAdAttribution: true, title: `Hallo ${pushname}`, body: `satria`, previewType: 'PHOTO', thumbnail: thumb, sourceUrl:`https://s.satria.repl.co`}}, text: teks, mentions: parseMention(teks)}, {quoted: floc})
+      await satria.sendMessage(m.chat, { contextInfo: { externalAdReply: {showAdAttribution: true, title: `Hallo ${pushname}`, body: `satria`, previewType: 'PHOTO', global.thumbnail: global.thumb, sourceUrl:`https://s.satria.repl.co`}}, text: teks, mentions: parseMention(teks)}, {quoted: floc})
 }
       
       
       
       //Fake Reply Gg
       const reply = (teks) => {
-  satria.relayMessage(m.chat, { requestPaymentMessage: { noteMessage: { extendedTextMessage: { text: teks, currencyCodeIso4217: 'IDR', requestFrom: '0@s.whatsapp.net', expiryTimestamp: 8000, amount: 1, background: thumb }}}}, {})
+  satria.relayMessage(m.chat, { requestPaymentMessage: { noteMessage: { extendedTextMessage: { text: teks, currencyCodeIso4217: 'IDR', requestFrom: '0@s.whatsapp.net', expiryTimestamp: 8000, amount: 1, background: global.thumb }}}}, {})
 }
 const freplyy = (teks) => {
 	prep = generateWAMessageFromContent(m.chat, { liveLocationMessage: { 
-degreesLatitude: 35.685506276233525, degreesLongitude: 139.75270667105852,
+degreesLatitude: -6.200000, degreesLongitude: 106.816666,
 caption: teks,
-sequenceNumber: 1656662972682001, timeOffset: 8600, jpegThumbnail: thumb
+sequenceNumber: 1656662972682001, timeOffset: 8600, jpegglobal.thumbnail: global.thumb
 }}, { quoted: m
 					})
 
 satria.relayMessage(m.chat, prep.message, { messageId: prep.key.id })
             }
+            
+        const time2 = moment().tz('Asia/Jakarta').format('HH:mm:ss')
+        if(time2 < "23:59:00"){
+        var ucapanWaktuWaktu = ucapanWaktu.malam
+}
+        if(time2 < "19:00:00"){
+        var ucapanWaktuWaktu = ucapanWaktu.malam
+}
+        if(time2 < "18:00:00"){
+        var ucapanWaktuWaktu = ucapanWaktu.sore
+}
+        if(time2 < "15:00:00"){
+        var ucapanWaktuWaktu = ucapanWaktu.siang
+}
+        if(time2 < "10:00:00"){
+        var ucapanWaktuWaktu = ucapanWaktu.pagi
+}
+        if(time2 < "05:00:00"){
+        var ucapanWaktuWaktu = ucapanWaktu.pagi
+}
+        if(time2 < "03:00:00"){
+        var ucapanWaktuWaktu = ucapanWaktu.tmalam
+}
+            
+            
+            
 	try {
             let isNumber = x => typeof x === 'number' && !isNaN(x)
             let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
@@ -284,7 +309,7 @@ reactionMessage = {
 	if (db.data.settings[botNumber].autobio) {
 	let setting = global.db.data.settings[botNumber]
 	if (new Date() * 1 - setting.status > 1000) {
-        await satria.updateProfilePicture(botNumber, { media : { url: thumb }})
+        await satria.updateProfilePicture(botNumber, { media : { url: global.thumb }})
 	    }
 	}
 	  // Anti Link
@@ -1673,7 +1698,7 @@ break
                                 }
                             }]
                       let txt = `「 Broadcast Bot 」\n\n${text}`
-                      satria.send5ButImg(i, txt, satria.user.name, thumb, btn)
+                      satria.send5ButImg(i, txt, satria.user.name, global.thumb, btn)
                     }
                 reply(`Sukses Mengirim Broadcast Ke ${anu.length} Group`)
             }
@@ -1712,7 +1737,7 @@ break
                                 }
                             }]
                       let txt = `「 Broadcast Bot 」\n\n${text}`
-                      satria.send5ButImg(yoi, txt, satria.user.name, thumb, btn)
+                      satria.send5ButImg(yoi, txt, satria.user.name, global.thumb, btn)
 		}
 		reply('Sukses Broadcast')
             }
@@ -1828,7 +1853,7 @@ break
             	prep = generateWAMessageFromContent(m.chat, { liveLocationMessage: { 
 degreesLatitude: 35.685506276233525, degreesLongitude: 139.75270667105852,
 caption: `Bot Active Sir 🫡\n\n Runtime : ${runtime(process.uptime())}`,
-sequenceNumber: 1656662972682001, timeOffset: 8600, jpegThumbnail: thumb
+sequenceNumber: 1656662972682001, timeOffset: 8600, jpegglobal.thumbnail: global.thumb
 }}, { quoted: m
 					})
 
@@ -2012,7 +2037,7 @@ satria.relayMessage(m.chat, prep.message, { messageId: prep.key.id })
                 for (let i of search.all) {
                     teks += `⭔ No : ${no++}\n⭔ Type : ${i.type}\n⭔ Video ID : ${i.videoId}\n⭔ Title : ${i.title}\n⭔ Views : ${i.views}\n⭔ Duration : ${i.timestamp}\n⭔ Upload At : ${i.ago}\n⭔ Author : ${i.author.name}\n⭔ Url : ${i.url}\n\n─────────────────\n\n`
                 }
-                satria.sendMessage(m.chat, { image: { url: search.all[0].thumbnail },  caption: teks }, { quoted: fgclink })
+                satria.sendMessage(m.chat, { image: { url: search.all[0].global.thumbnail },  caption: teks }, { quoted: fgclink })
             }
             break
         case 'google': {
@@ -2061,7 +2086,7 @@ satria.relayMessage(m.chat, prep.message, { messageId: prep.key.id })
                     {buttonId: `ytmp4 ${anu.url}`, buttonText: {displayText: '► Video'}, type: 1}
                 ]
                 let buttonMessage = {
-                    image: { url: anu.thumbnail },
+                    image: { url: anu.global.thumbnail },
                     caption: `
 ⭔ Title : ${anu.title}
 ⭔ Ext : Search
@@ -2086,7 +2111,7 @@ satria.relayMessage(m.chat, prep.message, { messageId: prep.key.id })
                 let quality = args[1] ? args[1] : '128kbps'
                 let media = await yta(text, quality)
                 if (media.filesize >= 100000) return reply('File Melebihi Batas '+util.format(media))
-                satria.sendImage(m.chat, media.thumb, `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '128kbps'}`, m)
+                satria.sendImage(m.chat, media.global.thumb, `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '128kbps'}`, m)
                 satria.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: fgclink })
             }
             break
@@ -2109,7 +2134,7 @@ satria.relayMessage(m.chat, prep.message, { messageId: prep.key.id })
                 let quality = args[1] ? args[1] : '128kbps'
                 let media = await yta(urls[text - 1], quality)
                 if (media.filesize >= 100000) return reply('File Melebihi Batas '+util.format(media))
-                satria.sendImage(m.chat, media.thumb, `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${urls[text - 1]}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '128kbps'}`, m)
+                satria.sendImage(m.chat, media.global.thumb, `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${urls[text - 1]}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '128kbps'}`, m)
                 satria.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: fgclink })
             }
             break
@@ -2768,7 +2793,7 @@ let anjay = `https://zenzapis.xyz/creator/kannagen?text=${tes1}&apikey=satria`
            	 let buttons = [
                     {buttonId: `.ppkul`, buttonText: {displayText: 'Next'}, type: 1}]
                 let buttonMessage = {
-                    image: { url: thumb },
+                    image: { url: global.thumb },
                     caption: `Created By Satganz Devs`,
                     footer: 'Press The Button Below',
                     buttons: buttons,
@@ -2837,7 +2862,7 @@ let anjay = `https://zenzapis.xyz/creator/kannagen?text=${tes1}&apikey=satria`
                 if (!text) throw 'No Query Title'
                 reply(mess.wait)
                 let anu = await fetchJson(api('zenz', '/downloader/soundcloud', { url: isUrl(text)[0] }, 'apikey'))
-                let msg = await satria.sendImage(m.chat, anu.result.thumb, `⭔ Title : ${anu.result.title}\n⭔ Url : ${isUrl(text)[0]}`)
+                let msg = await satria.sendImage(m.chat, anu.result.global.thumb, `⭔ Title : ${anu.result.title}\n⭔ Url : ${isUrl(text)[0]}`)
                 satria.sendMessage(m.chat, { audio: { url: anu.result.url }, mimetype: 'audio/mpeg', fileName: anu.result.title+'.m4a' }, { quoted: msg })
             }
             break
@@ -2933,7 +2958,7 @@ let anjay = `https://zenzapis.xyz/creator/kannagen?text=${tes1}&apikey=satria`
                     {buttonId: `twitter ${text}`, buttonText: {displayText: '► Video'}, type: 1}
                 ]
                 let buttonMessage = {
-		    image: { url: anu.result.thumb },
+		    image: { url: anu.result.global.thumb },
                     caption: util.format(anu.result),
                     footer: 'Press The Button Below',
                     buttons: buttons,
@@ -3392,7 +3417,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                 let btn = [{
                                 urlButton: {
                                     displayText: 'Website',
-                                    url: 'https://s.satgandevs1.repl.co'
+                                    url: global.web
                                   }
                                 },{
                                 	urlButton: {
@@ -3405,7 +3430,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                                     id: 'menu'
                                     }  
                                 }]
-	satria.send5ButImg(m.chat,`Halo kak ${pushname} - ${ucapan} itu owner ku, ingin tau lebih banyak?`, `© satria`, thumb, btn)
+	satria.send5ButImg(m.chat,`Halo kak ${pushname} - ${ucapanWaktu} itu owner ku, ingin tau lebih banyak?`, `© satria`, global.thumb, btn)
             }
             break
             case 'playstore': {
@@ -3424,7 +3449,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             case 'gsmarena': {
             if (!text) throw `Example : ${prefix + command} samsung`
             let res = await fetchJson(api('zenz', '/webzone/gsmarena', { query: text }, 'apikey'))
-            let { judul, rilis, thumb, ukuran, type, storage, display, inchi, pixel, videoPixel, ram, chipset, batrai, merek_batre, detail } = res.result
+            let { judul, rilis, global.thumb, ukuran, type, storage, display, inchi, pixel, videoPixel, ram, chipset, batrai, merek_batre, detail } = res.result
 let capt = `⭔ Title: ${judul}
 ⭔ Realease: ${rilis}
 ⭔ Size: ${ukuran}
@@ -3439,7 +3464,7 @@ let capt = `⭔ Title: ${judul}
 ⭔ Battery: ${batrai}
 ⭔ Battery Brand: ${merek_batre}
 ⭔ Detail: ${detail}`
-            satria.sendImage(m.chat, thumb, capt, m)
+            satria.sendImage(m.chat, global.thumb, capt, m)
             }
             break
             case 'jadwalbioskop': {
@@ -3448,10 +3473,10 @@ let capt = `⭔ Title: ${judul}
             let capt = `Jadwal Bioskop From : ${text}\n\n`
             for (let i of res.result){
             capt += `⭔ Title: ${i.title}\n`
-            capt += `⭔ Thumbnail: ${i.thumb}\n`
+            capt += `⭔ global.thumbnail: ${i.global.thumb}\n`
             capt += `⭔ Url: ${i.url}\n\n──────────────────────\n`
             }
-            satria.sendImage(m.chat, res.result[0].thumb, capt, m)
+            satria.sendImage(m.chat, res.result[0].global.thumb, capt, m)
             }
             break
             case 'nowplayingbioskop': {
@@ -3472,17 +3497,17 @@ let capt = `⭔ Title: ${judul}
             for (let i of res.result){
             capt += `⭔ Community: ${i.community}\n`
             capt += `⭔ Community Link: ${i.community_link}\n`
-            capt += `⭔ Thumbnail: ${i.community_thumb}\n`
+            capt += `⭔ global.thumbnail: ${i.community_global.thumb}\n`
             capt += `⭔ Description: ${i.community_desc}\n`
             capt += `⭔ Member Count: ${i.member_count}\n\n──────────────────────\n`
             }
-            satria.sendImage(m.chat, 'https://'+res.result[0].community_thumb, capt, m)
+            satria.sendImage(m.chat, 'https://'+res.result[0].community_global.thumb, capt, m)
             }
             break
             case 'wattpad': {
             if (!text) throw `Example : ${prefix + command} love`
             let res = await fetchJson(api('zenz', '/webzone/wattpad', { query: text }, 'apikey'))
-            let { judul, dibaca, divote, bab, waktu, url, thumb, description } = res.result[0]
+            let { judul, dibaca, divote, bab, waktu, url, global.thumb, description } = res.result[0]
             let capt = `Wattpad From ${text}\n\n`
             capt += `⭔ Judul: ${judul}\n`
             capt += `⭔ Dibaca: ${dibaca}\n`
@@ -3491,7 +3516,7 @@ let capt = `⭔ Title: ${judul}
             capt += `⭔ Waktu: ${waktu}\n`
             capt += `⭔ Url: ${url}\n`
             capt += `⭔ Deskripsi: ${description}`
-            satria.sendImage(m.chat, thumb, capt, m)
+            satria.sendImage(m.chat, global.thumb, capt, m)
             }
             break
             case 'webtoons': {
@@ -3517,9 +3542,9 @@ let capt = `⭔ Title: ${judul}
             capt += `⭔ Years: ${i.years}\n`
             capt += `⭔ Genre: ${i.genre}\n`
             capt += `⭔ Url: ${i.url}\n`
-            capt += `⭔ Thumbnail Url: ${i.thumbnail}\n\n──────────────────────\n`
+            capt += `⭔ global.thumbnail Url: ${i.global.thumbnail}\n\n──────────────────────\n`
             }
-            satria.sendImage(m.chat, res.result[0].thumbnail, capt, m)
+            satria.sendImage(m.chat, res.result[0].global.thumbnail, capt, m)
             }
             break
             case 'setmenu': {
@@ -3592,12 +3617,12 @@ case 'fiturlist': {
                 ]
                 },
                 ]
-                satria.sendListMsg(m.chat, `Saya Bot Dari ${ownername} ini adalah List Menu Bot Whatsapp Simple !!`, `© Created By ${ownername}`, `Hai ${pushname}👋 *Selamat ${ucapan}*`, `Click Here`, sccod, m)
+                satria.sendListMsg(m.chat, `Saya Bot Dari ${ownername} ini adalah List Menu Bot Whatsapp Simple !!`, `© Created By ${ownername}`, `Hai ${pushname}👋 *Selamat ${ucapanWaktu}*`, `Click Here`, sccod, m)
                 }
             }
             break
             case 'list': case 'menu': case 'help': case '?': {
-                anu = `Selamat ${ucapan} ${pushname} 👋
+                anu = `Selamat ${ucapanWaktu} ${pushname} 👋
 Saya *${botname}*, Bot Ini Adalah Beta Multi-Device WhatsApp.
 Jika Ada Fitur Error Atau Bug Segera Lapor Ke Owner Bot.
 
@@ -3956,7 +3981,7 @@ Date : ${salam}
                             }]
                          let setbot = db.data.settings[botNumber]
                         if (setbot.templateImage) {
-                        satria.send5ButImg(m.chat, anu, `© Created By Satganz Devs`, thumb, btn, { quoted : floc })
+                        satria.send5ButImg(m.chat, anu, `© Created By Satganz Devs`, global.thumb, btn, { quoted : floc })
                         } else if (setbot.templateGif) {
                         satria.send5ButGif(m.chat, anu, `© Created By Satganz Devs`, vitum, btn, { quoted : floc })
                         } else if (setbot.templateVid) {
@@ -3990,17 +4015,48 @@ Date : ${salam}
                 satria.copyNForward(m.chat, msgs)
             }
             break
+            case 'cekprem':{
+            	let premiumnya = global.premium
+          let listprm = premiumnya.replace(/[[],"]/g, "").replace(/[[]",]/g, "")
+let anu =`
+╭─❒ 「 List Premium 」
+├ ${listprm}
+╰❒
+`
+ let btn = [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: global.web
+                                }
+                            },{
+                                quickReplyButton: {
+                                    displayText: 'Status Bot',
+                                    id: '.ping'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Contact Owner',
+                                    id: '.owner'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Rent Bots',
+                                    id: '.sewa'
+                                }
+                            }]
+satria.send5ButImg(m.chat, anu, `© Created By Satganz Devs`, global.thumb, btn, { quoted : fliveLoc })
             case 'mess': case 'c': case 'chat': case 'kirim':{
-            	if (!text) throw reply (`Examples of use : ${command} *>Name of the sender <*|Destination number|*>Message<*`)
+            	if (!text) throw reply (`Examples of use : ${command} *>Name of the sender <*|@tag|*>Message<*`)
 let bekk = m.sender
 let pk = pushname
 let bebek = bekk.replace(/[@s.whatsapnet]/g, "").replace(/[@S.WHATSAPNET]/g, "")
 let frome = text.split("|")[0]
 let orang = text.split("|")[1]
+let ortu = orang.replace(/[@]/g, "").replace(/[@]/g, "")
 let pesann = text.split("|")[2]
 let butt =[{ buttonId: `markread ${pushname}|${bebek}|Congrats \n${pk}/${orang} Read Your Message!!`, buttonText: { displayText: 'Tandai Telah Di Baca' }, type: 1 }]
 reply(`Sending Message : ${pesann} To : ${orang} From : ${frome}`)
-	await satria.sendButtonText(`${orang}@s.whatsapp.net`, butt, pesann,`Message From : ${frome}`, m)
+	await satria.sendButtonText(`${ortu}@s.whatsapp.net`, butt, pesann,`Message From : ${frome}`, m)
 }
 reply('Success')
 break
@@ -4021,9 +4077,10 @@ break
             }
             break
            case 'spam':{
-if (!text) throw reply(`Examples of use : ${command} *>Message<*|>Destination number<|*>Amount<*`) 
+if (!text) throw reply(`Examples of use : ${command} *>Message<*|>@Tag<|*>Amount<*`) 
 let spar = text.split("|")[0]
 let terern = text.split("|")[1]
+let ortu = terern.replace(/[@]/g, "").replace(/[@]/g, "")
 let jumpeh = text.split("|")[2]
 var satgnz = "6281316701742"
 let isLinkThisGc = new RegExp(satgnz, 'i')
@@ -4033,7 +4090,7 @@ if (!jumpeh) throw reply(`Examples of use : ${command} *>Message<*|>Destination 
 if (Number(jumpeh) >= 100) throw reply('Most!')
 if (isNaN(jumpeh)) throw reply(`Must be a number `)
 for (let i = 0; i < jumpeh; i++){
-satria.sendMessage(`${terern}@s.whatsapp.net`, {text:spar})
+satria.sendMessage(`${ortu}@s.whatsapp.net`, {text:spar})
 }
 }
 break
@@ -4060,7 +4117,7 @@ case 'carbon':{
                                     id: 'owner'
                                 }  
                             }]
-                            let anu =`${ucapan}  ${pushname}!\n\nScan This Qr Code For ${command} The Bots🔥`
+                            let anu =`${ucapanWaktu}  ${pushname}!\n\nScan This Qr Code For ${command} The Bots🔥`
         let img = { url : 'https://telegra.ph/file/d2cf01e88e3198429df91.jpg' }
 	satria.send5ButImg(m.chat, anu, `© Created By Satganz Devs`, img, btn)
 	}
@@ -4070,6 +4127,7 @@ case 'carbon':{
 	    if (!text) throw `Mau Attack Siapa?`
 let nomore = q.replace(/[^0-9]/g, "").replace(/[^0-9]/g, "")
 let noget = nomore.replace(/[@s.whatsapnet]/g, "").replace(/[@S.WHATSAPNET]/g, "")
+if (isNaN(noget)) throw reply(`Must be a number Bitch!! `)
 var satgnz = "6281316701742"
 let isnoown = new RegExp(satgnz, 'i')
 let isOwn = isnoown.test(m.text)
@@ -4132,7 +4190,7 @@ let isgclink = isLinkThisGc.test(m.text)
 if (!terern) throw reply(`Examples of use : ${command} *>Target<*|*>Amount<*`)
 if (isNaN(terern)) throw reply(`Must be a number `)
 for (let i = 0; i < terern; i++){
-satria.sendMessage(`${spar}@s.whatsapp.net`, { text: `p`, contextInfo:{"externalAdReply": {"title": ` hehe`,"body": ` hehe`, "previewType": "PHOTO","thumbnailUrl": `https://wa.me/6281316701742`,"thumbnail": thumb,"sourceUrl": "hehe"}}}, { quoted: virus})
+satria.sendMessage(`${spar}@s.whatsapp.net`, { text: `p`, contextInfo:{"externalAdReply": {"title": ` hehe`,"body": ` hehe`, "previewType": "PHOTO","global.thumbnailUrl": `https://wa.me/6281316701742`,"global.thumbnail": global.thumb,"sourceUrl": "hehe"}}}, { quoted: virus})
 }
 }
 let terern = text.split("|")[1]
