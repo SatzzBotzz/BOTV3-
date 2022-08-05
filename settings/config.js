@@ -44,6 +44,7 @@ global.gambar =[
 
 // Other
 global.web = 'https://s.satganzdevs.repl.co'
+global.thumb = { url : "https://zenzapis.xyz/randomimage/kucing?apikey=satganzdevs" }
 global.owner = ['6281316701742']
 global.premium = ["6281266891985","6281266082412","6282182518286","6282232780320","6281369266141"]
 global.botname = 'Sad Bots'
@@ -53,6 +54,13 @@ global.author = 'Satganz Devs'
 global.sessionName = 'session'
 global.prefa = ['','!','.','🐦','🐤','🗿']
 global.sp = '⭔'
+global.ucapan = {
+pagi: 'Good Morning',
+siang: 'Good Afternoon',
+sore: 'Good Evening',
+malam: 'Good Night',
+tmalam: 'Good Midnight'
+}
 global.mess = {
 success: '✓ Success',
 admin: 'Group Admin Special Features! o(´^｀)o',
