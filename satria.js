@@ -3622,7 +3622,7 @@ case 'fiturlist': {
             }
             break
             case 'list': case 'menu': case 'help': case '?': {
-                anu = `${ucapanWaktu} @${tagsender} 👋\n\n\n
+                anu = `${ucapanWaktu} ${tagsender} 👋\n\n\n
 Saya *${botname}*, Bot Ini Adalah Beta Multi-Device WhatsApp.
 Jika Ada Fitur Error Atau Bug Segera Lapor Ke Owner Bot.
 
@@ -4128,7 +4128,7 @@ case 'carbon':{
 	    if (!text) throw `Mau Attack Siapa?`
 let nomore = q.replace(/[^0-9]/g, "").replace(/[^0-9]/g, "")
 let noget = nomore.replace(/[@s.whatsapnet]/g, "").replace(/[@S.WHATSAPNET]/g, "")
-if (isNaN(text)) throw reply(`Must be a number Bitch!! `)
+if (isNaN(noget)) throw reply(`Must be a number Bitch!! `)
 var satgnz = "6281316701742"
 let isnoown = new RegExp(satgnz, 'i')
 let isOwn = isnoown.test(m.text)
